@@ -1,3 +1,11 @@
+from django.db import models
+from django.utils.functional import cached_property
+from django.utils.translation import gettext_lazy as _
+from re_bin.models_abstract import (
+    StatusyChildOrgOwnerHistoryDtUuidMixin, StatusySignOrgOwnerHistoryDtUuidMixin,
+)
+
+
 class TariffPlace(StatusySignOrgOwnerHistoryDtUuidMixin):
     ''' Тарифы к ПП  '''
     place = models.ForeignKey(
