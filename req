@@ -1,0 +1,14 @@
+
+class StatusySignOrgOwnerHistoryDtUuidMixin(StatusySignValidatorMixin, OrgOwnerHistoryDtUuidMixin):
+    class Meta:
+        abstract = True
+
+    @cached_property
+    def transit_comment(self) -> str:
+        if self.statusy_transits and (comment := self.statusy_transits.order_by('-dt').first()):
+            return comment.answer_dynamic
+
+
+class StatusyChildOrgOwnerHistoryDtUuidMixin(StatusyChildMixin, OrgOwnerHistoryDtUuidMixin):
+    class Meta:
+        abstract = True
